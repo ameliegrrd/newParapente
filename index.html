@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parapente Méribel - Vols Biplace & Baptêmes</title>
+    <meta name="description" content="Découvrez le parapente à Méribel avec Stéphane et Pierre, pilotes professionnels. Vols biplace, baptêmes, tarifs, photos et réservations.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+</head>
+<body class="home-bg">
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">Notre équipe</a></li>
+            <li><a href="services.html">Prestations & Tarifs</a></li>
+            <li><a href="gallery.html">Photos/Vidéos</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Bienvenue chez Parapente Méribel</h1>
+        <p>Vivez l’expérience du vol libre avec des professionnels passionnés !</p>
+        <a href="contact.html" class="cta-btn">Réservez votre vol</a>
+    </section>
+
+    <section class="about">
+        <h2>À propos de nous</h2>
+        <p>
+            Passionnés de parapente et pilotes professionnels depuis plus de 25 ans, Stéphane et Pierre partagent leur amour du vol libre à Méribel. Notre priorité : la sécurité, la convivialité et une expérience inoubliable dans les airs.
+        </p>
+        <a href="about.html" class="cta-link">En savoir plus sur notre équipe</a>
+    </section>
+
+    <section class="why-us">
+        <h2>Pourquoi choisir Parapente Méribel ?</h2>
+        <ul>
+            <li>✔️ Pilotes diplômés et expérimentés</li>
+            <li>✔️ Sécurité et pédagogie avant tout</li>
+            <li>✔️ Vols adaptés à tous les niveaux</li>
+            <li>✔️ Vue imprenable sur les Alpes et la vallée de Méribel</li>
+            <li>✔️ Ambiance chaleureuse et conviviale</li>
+        </ul>
+    </section>
+    <section class="services-preview">
+        <h2>Nos prestations</h2>
+        <div class="services-list">
+            <div class="service-item">
+                <h3>Vol Découverte</h3>
+                <p>Un baptême de l’air accessible à tous pour découvrir les sensations uniques du parapente au-dessus de Méribel.</p>
+                <div class="price">à partir de 90€</div>
+            </div>
+            <div class="service-item">
+                <h3>Vol Sensation</h3>
+                <p>Pour les amateurs de sensations fortes, vivez un vol dynamique avec des manœuvres acrobatiques en toute sécurité.</p>
+                <div class="price">à partir de 120€</div>
+            </div>
+            <div class="service-item">
+                <h3>Vol Prestige</h3>
+                <p>Un vol plus long pour profiter pleinement du panorama exceptionnel des Alpes et de la vallée de Méribel.</p>
+                <div class="price">à partir de 150€</div>
+            </div>
+        </div>
+        <a href="services.html" class="cta-btn">Voir tous les tarifs et options</a>
+    </section>
+    <section class="gallery-preview">
+        <h2>En images : l’expérience Parapente Méribel</h2>
+        <div class="gallery-thumbs">
+            <img src="images/parapente7.jpeg" alt="Décollage parapente à Méribel" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente9.jpeg" alt="Vue aérienne sur la vallée de Méribel" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente3.jpeg" alt="Sourires en vol biplace" onclick="openLightbox(this.src, this.alt)">
+        </div>
+        <a href="gallery.html" class="cta-link">Voir toutes les photos</a>
+    </section>
+
+    <!-- Lightbox overlay -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
+    </div>
+    <section class="cta-bottom">
+        <h2>Prêt à vivre l’aventure ?</h2>
+        <p>Contactez-nous dès aujourd’hui pour réserver votre vol ou poser vos questions. Nous sommes là pour vous accompagner dans cette expérience inoubliable à Méribel !</p>
+        <a href="contact.html" class="cta-btn">Réservez votre vol maintenant</a>
+    </section>
+    <section class="gallery-preview">
+        <h2>En images : l’expérience Parapente Méribel</h2>
+        <div class="gallery-thumbs">
+            <img src="images/parapente3.jpeg" alt="Vol en parapente au-dessus des montagnes de Méribel" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente16.jpeg" alt="Parapente jaune survolant la vallée" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente19.jpeg" alt="Parapente bleu ciel au-dessus des montagnes" onclick="openLightbox(this.src, this.alt)">
+        </div>
+        <a href="gallery.html" class="cta-link">Voir toutes les photos</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Parapente Méribel. Tous droits réservés.</p>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
