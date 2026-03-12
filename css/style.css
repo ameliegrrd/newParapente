@@ -10,7 +10,7 @@ body {
 /* ========== HEADER & NAVIGATION ========== */
 header {
     background: #1e90ff;
-    padding: 0.5em 0;
+    padding: 30px 40px;
     box-shadow: 0 2px 8px rgba(30, 144, 255, 0.08);
 }
 header .container {
@@ -70,18 +70,24 @@ nav a:hover {
 /* ========== HERO SECTION ========== */
 .hero {
     text-align: center;
-    padding: 4em 1em 2em 1em;
+    padding: 0em 1em 2em 1em;
     background: transparent;
     color: #222831;
 }
 
 .hero h1 {
     color: #fff;
-    text-shadow: 0 2px 8px rgba(30,30,30,0.18);
-    font-size: 3em;         /* Try 3em for a big, bold look */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 3.5em;         /* Taille du titre d'accueil */
     line-height: 1.1;
     font-weight: 700;
     margin-bottom: 0.5em;
+    margin-top: 1em;
+}
+.hero p {
+    color: #444;           /* un gris foncé moins dur que le noir pur */
+    font-size: 1.3em;
+    margin-top: 0.8em;
 }
 
 @media (max-width: 600px) {
@@ -283,7 +289,7 @@ footer {
     max-width: 700px;
     margin: 3em auto 0 auto;
     padding: 2.5em 1.5em;
-    background: linear-gradient(135deg, #1e90ff 0%, #fff 60%, #e63946 100%);
+    background: #ffffff;
     border-radius: 18px;
     box-shadow: 0 2px 16px rgba(30, 144, 255, 0.10);
     text-align: center;
@@ -347,6 +353,7 @@ h1 {
     font-size: 2.2em;
     color: #1e90ff;
     letter-spacing: 1px;
+
 }
 
 /* */
@@ -355,7 +362,7 @@ h1 {
 body.home-bg {
     background:
             linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0)),
-            url('../images/parapente3.jpeg') no-repeat center center fixed;
+            url('../images/fondcentre.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -376,9 +383,10 @@ body.home-bg {
     text-align: center;
 }
 .team-member img {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
+    object-position: 50% 40%;
     border-radius: 50%;
     margin-bottom: 1em;
     border: 3px solid #1e90ff;
@@ -418,9 +426,9 @@ body.home-bg {
 
 .services-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 2em;
-    justify-content: center;
+    align-items: center; /* centre les blocs horizontalement */
     margin-bottom: 2.5em;
 }
 
@@ -429,11 +437,38 @@ body.home-bg {
     border-radius: 14px;
     box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
     padding: 1.5em 1.2em 1.2em 1.2em;
-    min-width: 260px;
-    max-width: 320px;
-    flex: 1 1 260px;
-    text-align: left;
+    width: 100%;         /* prend toute la largeur dispo */
+    max-width: 600px;    /* mais ne dépasse pas 600px */
+    margin: 0 auto 2em;  /* centre horizontalement et espace entre les blocs */
+    background: #f7faff;
+    border-radius: 14px;
+    box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
+    padding: 1.5em 1.2em 1.2em 1.2em;
+    text-align: leftx;
     margin-bottom: 1em;
+}
+details {
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+summary {
+    font-weight: bold;
+    color: #1e90ff;
+    list-style: none; /* enlève la flèche par défaut */
+    position: relative;
+    padding-left: 20px; /* laisse la place pour ta flèche custom */
+}
+
+summary::before {
+    content: "▶"; /* flèche fermée */
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg); /* flèche qui pivote quand c'est ouvert */
 }
 
 .service-item h2 {
@@ -475,7 +510,7 @@ body.home-bg {
 }
 
 .options h3 {
-    color: #1e90ff;
+    color: #222831;
     margin-bottom: 0.7em;
 }
 
