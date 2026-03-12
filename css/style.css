@@ -1,4 +1,4 @@
-/* ========== GLOBAL STYLES ========== */
+﻿/* ========== GLOBAL STYLES ========== */
 body {
     font-family: 'Montserrat', Arial, sans-serif;
     background: #f5f7fa;
@@ -85,7 +85,7 @@ nav a:hover {
     margin-top: 1em;
 }
 .hero p {
-    color: #444;           /* un gris foncé moins dur que le noir pur */
+    color: #444;
     font-size: 1.3em;
     margin-top: 0.8em;
 }
@@ -105,21 +105,24 @@ nav a:hover {
     color: #fff;
     font-weight: bold;
     border-radius: 30px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
 }
 .cta-btn:hover {
-    background: #fff;
-    color: #1e90ff;
-    border: 2px solid #1e90ff;
+    background: #1e90ff;
+    color: #fff;
+    border-color: #1e90ff;
+    transform: translateY(-2px);
 }
 
 /* ========== FOOTER ========== */
 footer {
     text-align: center;
     padding: 1em 0;
-    background: #222831;
-    color: #fff;
+    background: #153a66;
+    color: #eaf3ff;
     margin-top: 2em;
 }
 
@@ -148,6 +151,222 @@ footer {
     font-size: 1.1em;
     margin-bottom: 0.7em;
     color: #222831;
+}
+
+/* ========== HOME DAY FLOW ========== */
+.day-flow {
+    max-width: 1100px;
+    margin: 3em auto;
+    padding: 2.2em 2em 2.4em;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(247, 250, 255, 0.95) 100%);
+    border-radius: 22px;
+    border: 1px solid rgba(30, 144, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.12);
+}
+
+.day-flow h2 {
+    color: #1e90ff;
+    margin-top: 0;
+    margin-bottom: 1.4em;
+    text-align: center;
+    font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+    letter-spacing: 0.01em;
+}
+
+.roadmap {
+    list-style: none;
+    margin: 0;
+    padding: 0 0.25em;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(155px, 1fr));
+    gap: 1.8em;
+}
+
+.roadmap-step {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(30, 144, 255, 0.2);
+    border-radius: 18px;
+    padding: 1.2em 1em;
+    min-height: 210px;
+    box-shadow: 0 8px 18px rgba(30, 144, 255, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.roadmap-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(30, 144, 255, 0.16);
+}
+
+.roadmap-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -0.95em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1e90ff;
+    font-weight: 900;
+    font-size: 1.5em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e90ff 0%, #46a7ff 100%);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.9em;
+    box-shadow: 0 6px 12px rgba(30, 144, 255, 0.3);
+    font-size: 1.1em;
+}
+
+.roadmap-step p {
+    margin: 0;
+    color: #1f2a3a;
+    font-size: 1.12em;
+    line-height: 1.4;
+    text-align: center;
+    max-width: 11ch;
+    width: 100%;
+}
+
+@media (max-width: 980px) {
+    .day-flow {
+        padding: 1.6em 1.2em 1.8em;
+        border-radius: 18px;
+    }
+
+    .roadmap {
+        grid-template-columns: 1fr;
+        gap: 0.95em;
+        max-width: 540px;
+        margin: 0 auto;
+    }
+
+    .roadmap-step {
+        min-height: 0;
+        padding: 1.1em 1em;
+    }
+
+    .roadmap-step:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -0.9em;
+        transform: translateX(-50%);
+        font-size: 1.25em;
+    }
+}
+
+/* ========== HOME OFFERS (CONVERSION) ========== */
+.home-offers {
+    max-width: 1080px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 251, 255, 0.95) 100%);
+    border: 1px solid rgba(30, 144, 255, 0.12);
+    box-shadow: 0 12px 30px rgba(30, 144, 255, 0.11);
+}
+
+.home-offers .offers-intro {
+    margin: 0 auto 1.4em;
+    max-width: 700px;
+    font-size: 1.12em;
+    color: #304258;
+}
+
+.home-offers .services-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 1.3em;
+    align-items: stretch;
+}
+
+.home-offers .offer-card {
+    position: relative;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid rgba(30, 144, 255, 0.18);
+    border-radius: 18px;
+    box-shadow: 0 10px 20px rgba(30, 144, 255, 0.08);
+    padding: 1.25em 1.2em 1.15em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-offers .offer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 24px rgba(30, 144, 255, 0.14);
+}
+
+.home-offers .offer-badge {
+    display: inline-block;
+    margin-bottom: 0.7em;
+    padding: 0.35em 0.7em;
+    border-radius: 999px;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #115fae;
+    background: rgba(30, 144, 255, 0.11);
+}
+
+.home-offers .premium-card .offer-badge {
+    color: #9a2b36;
+    background: rgba(230, 57, 70, 0.13);
+}
+
+.home-offers .offer-card h3 {
+    margin-bottom: 0.55em;
+}
+
+.home-offers .offer-card p {
+    margin-bottom: 0.9em;
+}
+
+.home-offers .offer-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em;
+}
+
+.home-offers .offer-points li {
+    font-size: 0.98em;
+    color: #31445d;
+    margin-bottom: 0.45em;
+}
+
+.home-offers .offer-points li::before {
+    content: "✓ ";
+    color: #1e90ff;
+    font-weight: 700;
+}
+
+.home-offers .price {
+    font-size: 1.55em;
+    line-height: 1.1;
+}
+
+.home-offers .offers-reassurance {
+    margin: 1.25em auto 0.4em;
+    max-width: 700px;
+    color: #38516f;
+    font-size: 0.98em;
+}
+
+@media (max-width: 900px) {
+    .home-offers .services-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ========== CTA LINK ========== */
@@ -273,6 +492,10 @@ footer {
     cursor: pointer;
     z-index: 1001;
     transition: color 0.2s;
+    background: transparent;
+    border: 0;
+    line-height: 1;
+    padding: 0;
 }
 .lightbox-close:hover {
     color: #e63946;
@@ -402,141 +625,186 @@ body.home-bg {
 
 /* ========== SERVICES PAGE ========== */
 
-.services-preview {
-    max-width: 900px;
+.services-page .services-preview {
+    max-width: 1060px;
     margin: 3em auto 2em auto;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 16px rgba(30, 144, 255, 0.07);
-    padding: 2.5em 1.5em 2em 1.5em;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 250, 255, 0.96));
+    border: 1px solid rgba(30, 144, 255, 0.12);
+    border-radius: 22px;
+    box-shadow: 0 12px 28px rgba(30, 144, 255, 0.12);
+    padding: 2.6em 1.8em 2.2em 1.8em;
     text-align: center;
 }
 
-.services-preview h1 {
+.services-page .services-preview h1 {
     color: #1e90ff;
-    margin-bottom: 0.5em;
-    font-size: 2.3em;
+    margin-bottom: 0.35em;
+    font-size: clamp(2rem, 3vw, 2.8rem);
 }
 
-.services-preview > p {
-    color: #222831;
-    font-size: 1.15em;
-    margin-bottom: 2em;
+.services-page .services-preview > p {
+    color: #304258;
+    font-size: 1.14em;
+    margin: 0 auto 2.1em;
+    max-width: 760px;
+    line-height: 1.45;
 }
 
-.services-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    align-items: center; /* centre les blocs horizontalement */
-    margin-bottom: 2.5em;
+.services-page .services-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    column-gap: 1.35em;
+    row-gap: 1.35em;
+    grid-auto-flow: row;
+    align-items: start;
+    margin-bottom: 2.2em;
 }
 
-.service-item {
-    background: #f7faff;
-    border-radius: 14px;
-    box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
-    padding: 1.5em 1.2em 1.2em 1.2em;
-    width: 100%;         /* prend toute la largeur dispo */
-    max-width: 600px;    /* mais ne dépasse pas 600px */
-    margin: 0 auto 2em;  /* centre horizontalement et espace entre les blocs */
-    background: #f7faff;
-    border-radius: 14px;
-    box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
-    padding: 1.5em 1.2em 1.2em 1.2em;
-    text-align: leftx;
-    margin-bottom: 1em;
+.services-page .service-item {
+    position: relative;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(30, 144, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(30, 144, 255, 0.09);
+    padding: 1.45em 1.25em 1.2em 1.25em;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    min-width: 0;
+    text-align: left;
+    align-self: start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-details {
+
+.services-page .service-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 24px rgba(30, 144, 255, 0.14);
+}
+
+.services-page .service-tag {
+    display: inline-block;
+    margin-bottom: 0.7em;
+    padding: 0.34em 0.7em;
+    border-radius: 999px;
+    background: rgba(30, 144, 255, 0.12);
+    color: #0f63b8;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.services-page .service-premium .service-tag {
+    background: rgba(230, 57, 70, 0.12);
+    color: #a12434;
+}
+
+.services-page details {
     margin-top: 1em;
     cursor: pointer;
 }
 
-summary {
+.services-page summary {
     font-weight: bold;
     color: #1e90ff;
-    list-style: none; /* enlève la flèche par défaut */
+    list-style: none;
     position: relative;
-    padding-left: 20px; /* laisse la place pour ta flèche custom */
+    padding-left: 20px;
 }
 
-summary::before {
-    content: "▶"; /* flèche fermée */
+.services-page summary::before {
+    content: "▶";
     position: absolute;
     left: 0;
     transition: transform 0.2s;
 }
 
-details[open] summary::before {
-    transform: rotate(90deg); /* flèche qui pivote quand c'est ouvert */
+.services-page details[open] summary::before {
+    transform: rotate(90deg); /* fleche qui pivote quand c'est ouvert */
 }
 
-.service-item h2 {
+.services-page .service-item h2 {
     color: #1e90ff;
-    font-size: 1.25em;
-    margin-bottom: 0.7em;
-}
-
-.service-item ul {
-    padding-left: 1.1em;
-    margin-bottom: 0.7em;
-}
-
-.service-item li {
+    font-size: 1.42em;
     margin-bottom: 0.4em;
-    font-size: 1.08em;
-    color: #222831;
 }
 
-.service-item .price {
+.services-page .service-hook {
+    margin: 0 0 0.8em;
+    color: #2a3b54;
+    font-size: 1.03em;
+    line-height: 1.4;
+}
+
+.services-page .service-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em;
+}
+
+.services-page .service-benefits li {
+    margin-bottom: 0.45em;
+    font-size: 0.98em;
+    color: #263a53;
+}
+
+.services-page .service-benefits li::before {
+    content: "✓ ";
+    color: #1e90ff;
+    font-weight: 700;
+}
+
+.services-page .service-price {
+    margin: 0 0 0.9em;
     color: #e63946;
-    font-weight: bold;
+    font-size: 1.58em;
+    font-weight: 800;
+    letter-spacing: 0.01em;
 }
 
-.service-item p {
+.services-page .service-item details p {
     color: #444;
     font-size: 0.98em;
     margin-bottom: 0.2em;
 }
 
-.options {
-    margin: 2.5em auto 1.5em auto;
-    max-width: 600px;
-    background: #f7faff;
-    border-radius: 12px;
-    box-shadow: 0 1px 6px rgba(30, 144, 255, 0.08);
-    padding: 1.5em 1em;
+.services-page .options {
+    margin: 2em auto 1.5em auto;
+    max-width: 760px;
+    background: #ffffff;
+    border: 1px solid rgba(30, 144, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(30, 144, 255, 0.08);
+    padding: 1.4em 1.2em;
     text-align: left;
 }
 
-.options h3 {
+.services-page .options h3 {
     color: #222831;
     margin-bottom: 0.7em;
 }
 
-.options ul {
+.services-page .options ul {
     list-style: none;
     padding: 0;
     margin: 0 0 1em 0;
 }
 
-.options li {
+.services-page .options li {
     font-size: 1.08em;
     margin-bottom: 0.5em;
     color: #222831;
 }
 
-.options strong {
-    color: #e63946;
+.services-page .options strong {
+    color: #1e90ff;
 }
 
-.options p {
+.services-page .options p {
     margin-top: 1em;
     font-size: 1.05em;
     color: #222831;
 }
 
-.cta-btn {
+.services-page .cta-btn {
     display: inline-block;
     margin-top: 2em;
     background: #e63946; /* Solid red */
@@ -545,123 +813,185 @@ details[open] summary::before {
     font-size: 1.15em;
     padding: 0.9em 2.2em;
     border-radius: 30px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
     text-decoration: none;
     box-shadow: 0 2px 8px rgba(30, 144, 255, 0.10);
-    transition: background 0.2s, transform 0.2s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
 }
 
-.cta-btn:hover {
+.services-page .cta-btn:hover {
     background: #1e90ff; /* Solid blue on hover */
-    transform: translateY(-2px) scale(1.03);
+    color: #fff;
+    border-color: #1e90ff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 920px) {
+    .services-page .services-list {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
 }
 
 /* ========== CONTACTS PAGE ========== */
 
 .contact-section {
-    max-width: 900px;
-    margin: 3em auto 2em auto;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 16px rgba(30, 144, 255, 0.07);
-    padding: 2.5em 1.5em 2em 1.5em;
+    max-width: 1080px;
+    margin: 3.2em auto 2.2em auto;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 255, 0.96));
+    border: 1px solid rgba(30, 144, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 14px 30px rgba(30, 144, 255, 0.12);
+    padding: 2.8em 2em 2.2em 2em;
     text-align: center;
 }
 
 .contact-section h1 {
     color: #1e90ff;
-    margin-bottom: 0.5em;
-    font-size: 2.3em;
+    margin-bottom: 0.45em;
+    font-size: clamp(2rem, 3vw, 3rem);
+    letter-spacing: 0.01em;
 }
 
 .contact-section > p {
-    color: #222831;
-    font-size: 1.15em;
-    margin-bottom: 2em;
+    color: #304258;
+    font-size: 1.24em;
+    margin: 0 auto 2.1em;
+    max-width: 840px;
+    line-height: 1.35;
 }
 
 .contact-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2em;
-    justify-content: center;
-    margin-bottom: 2.5em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 1.25em;
+    margin-bottom: 2.2em;
 }
 
 .contact-card {
-    background: #f7faff;
-    border-radius: 14px;
-    box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
-    padding: 1.5em 1.2em 1.2em 1.2em;
-    min-width: 220px;
-    max-width: 300px;
-    flex: 1 1 220px;
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(30, 144, 255, 0.18);
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(30, 144, 255, 0.08);
+    padding: 1.35em 1.2em 1.25em;
+    min-height: 0;
     text-align: left;
-    margin-bottom: 1em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(30, 144, 255, 0.35);
+    box-shadow: 0 14px 24px rgba(30, 144, 255, 0.14);
 }
 
 .contact-card h2 {
     color: #1e90ff;
-    font-size: 1.15em;
-    margin-bottom: 0.7em;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    margin-bottom: 0.55em;
+    min-height: 0;
 }
 
 .contact-card a {
-    color: #e63946;
+    color: #111111;
     text-decoration: none;
     font-weight: bold;
+    border-bottom: 1px dashed rgba(17, 17, 17, 0.35);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-card a[href^="tel:"] {
+    color: #e63946;
+    border-bottom-color: rgba(230, 57, 70, 0.45);
 }
 
 .contact-card a:hover {
-    text-decoration: underline;
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.55);
+}
+
+.contact-card p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: #1f2a3a;
 }
 
 .contact-info {
-    margin: 2em 0 1.5em 0;
+    margin: 2.4em 0 1.5em 0;
     text-align: left;
 }
 
 .contact-info h3 {
     color: #1e90ff;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.45em;
+    font-size: 1.45em;
 }
 
 .contact-info p {
-    color: #222831;
+    color: #22324a;
     font-size: 1.08em;
     margin-bottom: 1em;
+    line-height: 1.45;
 }
 
 .map-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 760px;
     margin: 0 auto;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
+    border: 1px solid rgba(30, 144, 255, 0.14);
+    box-shadow: 0 10px 22px rgba(30, 144, 255, 0.12);
 }
 
 .contact-note {
-    margin-top: 2em;
+    margin-top: 2.2em;
     font-size: 1.08em;
-    color: #222831;
+    color: #22324a;
+}
+
+@media (max-width: 950px) {
+    .contact-section {
+        padding: 2em 1.2em 1.8em;
+        border-radius: 18px;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+
+    .contact-card {
+        min-height: 0;
+    }
+
+    .contact-card h2 {
+        min-height: 0;
+    }
 }
 
 /* ========== FAQS PAGE ========== */
 
 .faq-section {
-    max-width: 900px;
+    max-width: 980px;
     margin: 3em auto 2em auto;
     background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 16px rgba(30, 144, 255, 0.07);
-    padding: 2.5em 1.5em 2em 1.5em;
+    border-radius: 22px;
+    border: 1px solid rgba(30, 144, 255, 0.12);
+    box-shadow: 0 12px 26px rgba(30, 144, 255, 0.1);
+    padding: 2.6em 1.8em 2.2em;
     text-align: center;
 }
 
 .faq-section h1 {
     color: #1e90ff;
-    margin-bottom: 1.5em;
-    font-size: 2.3em;
+    margin-bottom: 1.2em;
+    font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+    letter-spacing: 0.01em;
 }
 
 .faq-list {
@@ -672,20 +1002,25 @@ details[open] summary::before {
 
 .faq-item {
     margin-bottom: 1em;
-    background: #f7faff;
-    border-radius: 12px;
-    box-shadow: 0 1px 8px rgba(30, 144, 255, 0.06);
+    background: #ffffff;
+    border: 1px solid rgba(30, 144, 255, 0.16);
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(30, 144, 255, 0.08);
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .faq-question {
     display: flex;
+    width: 100%;
+    border: 0;
+    background: transparent;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2em 1em;
+    padding: 1em 1.05em;
     cursor: pointer;
     transition: background 0.2s ease;
+    text-align: left;
 }
 
 .faq-question:hover {
@@ -694,15 +1029,17 @@ details[open] summary::before {
 
 .faq-question h2 {
     color: #1e90ff;
-    font-size: 1.15em;
+    font-size: 1.12rem;
+    font-weight: 600;
     margin: 0;
     flex: 1;
+    line-height: 1.35;
 }
 
 .faq-toggle {
     color: #1e90ff;
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 700;
     margin-left: 1em;
     transition: transform 0.3s ease;
 }
@@ -718,8 +1055,10 @@ details[open] summary::before {
 }
 
 .faq-answer p {
-    color: #222831;
-    font-size: 1.08em;
+    color: #1e90ff;
+    font-size: 1.04rem;
+    line-height: 1.5;
     margin: 0;
-    padding: 0 1em 1.2em 1em;
+    padding: 0 1.05em 1.1em 1.05em;
 }
+

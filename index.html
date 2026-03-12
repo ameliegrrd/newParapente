@@ -1,10 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parapente Méribel - Vols Biplace & Baptêmes</title>
     <meta name="description" content="Découvrez le parapente à Méribel avec Stéphane et Pierre, pilotes professionnels. Vols biplace, baptêmes, tarifs, photos et réservations.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Parapente Méribel - Vols Biplace & Baptêmes">
+    <meta property="og:description" content="Découvrez le parapente à Méribel avec Stéphane et Pierre, pilotes professionnels.">
+    <meta property="og:image" content="images/parapente7.jpeg">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 </head>
@@ -12,7 +18,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html" class="active">Accueil</a></li>
             <li><a href="about.html">Notre équipe</a></li>
             <li><a href="services.html">Prestations & Tarifs</a></li>
             <li><a href="gallery.html">Photos/Vidéos</a></li>
@@ -47,43 +53,83 @@
             <li>✔️ Ambiance chaleureuse et conviviale</li>
         </ul>
     </section>
-    <section class="services-preview">
+
+    <section class="day-flow">
+        <h2>Déroulé clair de votre journée</h2>
+        <ol class="roadmap">
+            <li class="roadmap-step">
+                <span class="step-number">1</span>
+                <p>Rendez-vous au rond-point de la Chaudanne</p>
+            </li>
+            <li class="roadmap-step">
+                <span class="step-number">2</span>
+                <p>Montée en 4x4 jusqu'au décollage</p>
+            </li>
+            <li class="roadmap-step">
+                <span class="step-number">3</span>
+                <p>Équipement et briefing</p>
+            </li>
+            <li class="roadmap-step">
+                <span class="step-number">4</span>
+                <p>Vol biplace au-dessus de la vallée</p>
+            </li>
+            <li class="roadmap-step">
+                <span class="step-number">5</span>
+                <p>Atterrissage au lieu de rendez-vous de départ</p>
+            </li>
+        </ol>
+    </section>
+
+    <section class="services-preview home-offers">
         <h2>Nos prestations</h2>
+        <p class="offers-intro">Choisissez l'expérience qui vous correspond et réservez votre place dans les airs.</p>
         <div class="services-list">
-            <div class="service-item">
+            <article class="service-item offer-card">
+                <span class="offer-badge">Le plus choisi</span>
                 <h3>Vol Découverte</h3>
-                <p>Un baptême de l’air accessible à tous pour découvrir les sensations uniques du parapente au-dessus de Méribel.</p>
-                <br>
-                <div class="price">à partir de 140€</div>
-            </div>
-            <div class="service-item">
+                <p>Un baptême de l'air accessible à tous, idéal pour une première fois inoubliable au-dessus de Méribel.</p>
+                <ul class="offer-points">
+                    <li>Chaque vol est différent</li>
+                    <li>Tour de la vallée de Méribel</li>
+                    <li>Sensations douces et/ou fortes</li>
+                </ul>
+                <div class="price">À partir de 140 EUR</div>
+            </article>
+            <article class="service-item offer-card premium-card">
+                <span class="offer-badge">Expérience premium</span>
                 <h3>Vol Premium</h3>
-                <p>Un vol plus long pour un survol de plusieurs vallées avec un panorama incontournable sur les Alpes.</p>
-                <br>
-                <div class="price">à partir de 300€</div>
-            </div>
+                <p>Un vol plus long pour survoler plusieurs vallées et profiter d'un panorama alpin exceptionnel.</p>
+                <ul class="offer-points">
+                    <li>Temps de vol étendu</li>
+                    <li>Parcours panoramique multi-vallées</li>
+                    <li>Souvenir fort à offrir ou à vivre</li>
+                </ul>
+                <div class="price">À partir de 300 EUR</div>
+            </article>
         </div>
+        <p class="offers-reassurance">Places limitées selon la météo. Réservez en avance pour garantir votre créneau.</p>
         <a href="services.html" class="cta-btn">Voir tous les tarifs et options</a>
     </section>
+
     <section class="gallery-preview">
-        <h2>En images : l’expérience Parapente Méribel</h2>
+        <h2>En images : l'expérience Parapente Méribel</h2>
         <div class="gallery-thumbs">
-            <img src="images/parapente7.jpeg" alt="Décollage parapente à Méribel" onclick="openLightbox(this.src, this.alt)">
-            <img src="images/parapente9.jpeg" alt="Vue aérienne sur la vallée de Méribel" onclick="openLightbox(this.src, this.alt)">
-            <img src="images/parapente3.jpeg" alt="Sourires en vol biplace" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente7.jpeg" alt="Décollage parapente à Méribel" width="1200" height="800" loading="lazy" decoding="async" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente9.jpeg" alt="Vue aérienne sur la vallée de Méribel" width="1200" height="800" loading="lazy" decoding="async" onclick="openLightbox(this.src, this.alt)">
+            <img src="images/parapente3.jpeg" alt="Sourires en vol biplace" width="1200" height="800" loading="lazy" decoding="async" onclick="openLightbox(this.src, this.alt)">
         </div>
         <a href="gallery.html" class="cta-link">Voir toutes les photos</a>
     </section>
 
-    <!-- Lightbox overlay -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <button class="lightbox-close" type="button" aria-label="Fermer la galerie" onclick="closeLightbox()">×</button>
         <img id="lightbox-img" src="" alt="">
         <div id="lightbox-caption"></div>
     </div>
+
     <section class="cta-bottom">
-        <h2>Prêt à vivre l’aventure ?</h2>
-        <p>Contactez-nous dès aujourd’hui pour réserver votre vol ou poser vos questions. Nous sommes là pour vous accompagner dans cette expérience inoubliable à Méribel !</p>
+        <h2>Prêt à vivre l'aventure ?</h2>
+        <p>Contactez-nous dès aujourd'hui pour réserver votre vol ou poser vos questions. Nous sommes là pour vous accompagner dans cette expérience inoubliable à Méribel !</p>
         <a href="contact.html" class="cta-btn">Réservez votre vol maintenant</a>
     </section>
 </main>

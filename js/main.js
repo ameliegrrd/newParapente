@@ -1,12 +1,23 @@
-function openLightbox(src, alt) {
-    document.getElementById('lightbox-img').src = src.replace('/200/130', '/800/520');
-    document.getElementById('lightbox-img').alt = alt;
-    document.getElementById('lightbox-caption').textContent = alt;
-    document.getElementById('lightbox').style.display = 'flex';
+﻿function openLightbox(src, alt) {
+    const lightbox = document.getElementById('lightbox');
+    const image = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    if (!lightbox || !image || !caption) {
+        return;
+    }
+
+    image.src = src;
+    image.alt = alt;
+    caption.textContent = alt;
+    lightbox.style.display = 'flex';
 }
 
 function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) {
+        return;
+    }
+    lightbox.style.display = 'none';
 }
 
 function toggleFAQ(element) {
@@ -14,13 +25,25 @@ function toggleFAQ(element) {
     const answer = faqItem.querySelector('.faq-answer');
     const toggle = element.querySelector('.faq-toggle');
 
+    if (!answer || !toggle) {
+        return;
+    }
+
     if (answer.style.maxHeight) {
         answer.style.maxHeight = null;
         toggle.textContent = '+';
+        element.setAttribute('aria-expanded', 'false');
         faqItem.classList.remove('active');
     } else {
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        toggle.textContent = '−';
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        toggle.textContent = '-';
+        element.setAttribute('aria-expanded', 'true');
         faqItem.classList.add('active');
     }
 }
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        closeLightbox();
+    }
+});
