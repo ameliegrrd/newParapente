@@ -7,6 +7,34 @@ body {
     padding: 0;
 }
 
+/* ========== PAGE TRANSITIONS ========== */
+.page-transition-ready {
+    transition: transform 200ms ease;
+    will-change: transform;
+}
+
+.page-transition {
+    transform: translateY(6px);
+}
+
+.page-transition-in {
+    transform: translateY(0);
+}
+
+.page-transition-out {
+    transform: translateY(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-transition-ready,
+    .page-transition,
+    .page-transition-in,
+    .page-transition-out {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
 /* ========== HEADER & NAVIGATION ========== */
 header {
     background: #1e90ff;
@@ -528,6 +556,16 @@ footer {
 }
 
 /* ========== FULL GALLERY PAGE GRID ========== */
+.gallery-page-panel {
+    max-width: 1240px;
+    margin: 2.2em auto;
+    padding: 1.2em 0.2em 1.5em;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(30, 144, 255, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 10px 24px rgba(30, 144, 255, 0.12);
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -552,6 +590,12 @@ footer {
 
 /* ========== RESPONSIVE ADJUSTMENTS ========== */
 @media (max-width: 600px) {
+    .gallery-page-panel {
+        margin: 1.4em 0.6em;
+        padding: 0.9em 0.2em 1em;
+        border-radius: 14px;
+    }
+
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 0.8em;

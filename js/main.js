@@ -47,3 +47,35 @@ document.addEventListener('keydown', function (event) {
         closeLightbox();
     }
 });
+
+(function setupPageTransitions() {
+    const main = document.querySelector('main');
+    if (!main) {
+        return;
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const target =
+        main.querySelector(':scope > section') ||
+        main.querySelector(':scope > div') ||
+        main;
+
+    target.classList.add('page-transition', 'page-transition-ready');
+    requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+            target.classList.remove('page-transition');
+            target.classList.add('page-transition-in');
+        });
+    });
+
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+            target.classList.remove('page-transition-out');
+            target.classList.add('page-transition-in');
+        }
+    });
+
+})();
