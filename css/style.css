@@ -83,6 +83,49 @@ nav a:hover {
     color: #e63946; /* Red accent on hover */
 }
 
+.lang-switch-item {
+    display: flex;
+    align-items: center;
+}
+
+.lang-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.25em 0.55em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.86em;
+    line-height: 1;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-switch-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.75);
+}
+
+.lang-switch-btn .lang-option {
+    opacity: 0.8;
+}
+
+.lang-switch-btn.is-en .lang-option--en,
+.lang-switch-btn:not(.is-en) .lang-option--fr {
+    opacity: 1;
+}
+
+.lang-switch-btn .lang-knob {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    display: inline-block;
+}
+
 /* Responsive header/nav */
 @media (max-width: 600px) {
     header .container {
@@ -979,6 +1022,12 @@ body.home-bg {
     font-size: 1.05rem;
     line-height: 1.45;
     color: #1f2a3a;
+}
+
+.contact-card .contact-card-subnote {
+    margin: -0.2em 0 0.55em;
+    font-size: 0.9rem;
+    color: #5c6b80;
 }
 
 .contact-info {
