@@ -848,6 +848,23 @@ body.home-bg {
     color: #222831;
 }
 
+.services-page .inline-contact-btn {
+    display: inline;
+    margin-left: 0.35em;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #e63946;
+    font-weight: 400;
+    text-decoration: underline;
+    line-height: 1.2;
+    transition: color 0.2s ease;
+}
+
+.services-page .inline-contact-btn:hover {
+    color: #c92f3b;
+}
+
 .services-page .cta-btn {
     display: inline-block;
     margin-top: 2em;
