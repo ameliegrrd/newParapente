@@ -355,12 +355,16 @@ document.addEventListener('keydown', function (event) {
             setText('.home-offers .offer-card:nth-of-type(2) .price', 'From 300 €');
             setText('.offers-reassurance', 'Limited slots depending on weather. Book in advance to secure your slot.');
             setText('.home-offers .cta-btn', 'See all prices and options');
+            setText('.home-local-videos h2', 'In-flight videos');
+            setText('.home-local-videos p', 'Also watch our panoramic flight videos filmed in Meribel.');
+            setText('.gallery-local-videos.home-local-videos h2', 'In-flight videos');
+            setText('.gallery-local-videos.home-local-videos p', 'Also watch our panoramic flight videos filmed in Meribel.');
             setText('.gallery-preview h2', 'In pictures: the Parapente Meribel experience');
             setText('.gallery-preview .cta-link', 'See all photos');
             setAltList('.gallery-thumbs img', [
-                'Paragliding takeoff in Meribel',
-                'Aerial view over the Meribel valley',
-                'Smiles during tandem flight'
+                'Tandem passenger flying above Meribel',
+                'Aerial panorama of mountain peaks around Meribel',
+                'Winter paragliding view above Meribel'
             ]);
             setText('.home-social h3', 'Follow us on Instagram');
             setText('.home-social p', 'Discover our latest flight photos and videos in Meribel.');
@@ -417,7 +421,7 @@ document.addEventListener('keydown', function (event) {
             setText('.service-premium .service-price', '300 € / flight');
             setText('.service-premium summary', 'Learn more');
             setHtml('.service-premium details', '<summary>Learn more</summary><p>Flight duration: around 45 minutes</p><p>Accessible from age 5, no experience required</p><p class="meeting-slot"><strong>In the morning:</strong> meet at the Tougnette gondola departure, on the Chaudanne plateau.</p><p class="meeting-slot"><strong>In the afternoon:</strong> meet at the Rhodos aerial parking area, at the entrance to the Chaudanne plateau, near the roundabout.</p><p>Photos and videos available as an option</p>');
-            setHtml('.flight-details', '<h3>Flight details</h3><h4>In the morning</h4><p>900 m vertical flight from the top of Tougnette, in calm and/or rising conditions.</p><p>Ascent by gondola, then chairlift (if you already have a lift pass, we deduct the ascent cost from the flight price).</p><p>This flight is focused on an aerial tour over the Cherferie ridges toward Roc de Fer. Flying closer to the terrain during a large part of the route often allows wildlife observation (chamois, hinds and deer).</p><p>Conditions are sometimes strong enough to climb above Roc de Fer and then cross the valley.</p><p>If the forecast wind is from the west, the flight is moved to the Saulire sector.</p><h4>In the afternoon</h4><p>900 m vertical flight in the altiport sector, between Saulire and Col de la Loze.</p><p>Often in rising air, this flight also offers a beautiful aerial tour, with optional passenger piloting on request and/or stronger sensations for thrill-seekers.</p><h4>Common landing area for both sites</h4><p>Landing is next to the Saulire Express gondola departure station, on the Corbey slalom stadium landing area.</p><p>The meeting point is very close to the entrance of the Chaudanne leisure area. Free summer parking is nearby (toward the tunnel entrance).</p>');
+            setHtml('.flight-details', '<h3>Flight details</h3><h4>In the morning</h4><p>900 m vertical flight from the top of Tougnette, in calm and/or rising conditions.</p><p>Ascent by gondola, then chairlift (if you already have a lift pass, we deduct the ascent cost from the flight price).</p><p>This flight is focused on an aerial tour over the Cherferie ridges toward Roc de Fer. Flying closer to the terrain during a large part of the route often allows wildlife observation (chamois, hinds and deer).</p><p>Conditions are sometimes strong enough to climb above Roc de Fer and then cross the valley.</p><p>If the forecast wind is from the west, the flight is moved to the Saulire sector.</p><h4>In the afternoon</h4><p>900 m vertical flight in the altiport sector, between Saulire and Col de la Loze.</p><p>Often in rising air, this flight also offers a beautiful aerial tour, with optional passenger piloting on request and/or stronger sensations for thrill-seekers.</p><div class=\"flight-vehicle-gallery\"><div class=\"flight-vehicle-grid\"><img class=\"vehicle-photo vehicle-photo-1\" src=\"images/vehicule-rendezvous-1.jpg\" alt=\"Parapente Meribel vehicle at the meeting point\" loading=\"lazy\" decoding=\"async\"><img class=\"vehicle-photo vehicle-photo-2\" src=\"images/vehicule-rendezvous-2.jpg\" alt=\"Team vehicle at the meeting point in Meribel\" loading=\"lazy\" decoding=\"async\"></div><p class=\"flight-vehicle-title\">Our vehicle at the meeting point of the afternoon</p></div><h4>Common landing area for both sites</h4><p>Landing is next to the Saulire Express gondola departure station, on the Corbey slalom stadium landing area.</p><p>The meeting point is very close to the entrance of the Chaudanne leisure area. Free summer parking is nearby (toward the tunnel entrance).</p>');
             setText('.flight-details .resource-download', 'Click here to get all the answers you need (downloadable PDF)');
             setText('.options h3', 'Options & Info');
             setListHtml('.options ul li', [
@@ -437,8 +441,15 @@ document.addEventListener('keydown', function (event) {
             setMeta('meta[property="og:description"]', 'Discover paragliding flights in Meribel through photos.');
             setText('.gallery-video-preview h2', 'Video preview');
             setText('.gallery-video-preview p', 'Watch a short preview of the flight experience in Meribel.');
+            setText('.gallery-local-videos h2', 'In-flight videos');
+            setText('.gallery-local-videos p', 'Also watch our panoramic flight videos filmed in Meribel.');
             setText('.gallery-page-panel h1', 'Photo gallery');
             setAltList('.gallery-grid img', [
+                'Tandem passenger flying above Meribel',
+                'Aerial panorama of mountain peaks around Meribel',
+                'Winter paragliding view above Meribel',
+                'Preparing equipment before takeoff',
+                'Two paragliders flying above Meribel',
                 'Paragliding takeoff in Meribel',
                 'Pre-flight preparation',
                 'Flight above the mountains',
@@ -583,9 +594,8 @@ document.addEventListener('keydown', function (event) {
             setText('.contact-social h3', 'Follow us on Instagram');
             setText('.contact-social p', 'Discover our latest flight photos and videos in Meribel.');
             setText('.contact-social-link span', '@parapentemeribel');
-            setText('.contact-info h3', 'Where to find us?');
-            setText('.contact-info p', 'Meeting point at the Corbey slalom stadium landing area, near Saulire Express gondola, Meribel.');
-            setHtml('.contact-note p', '<strong>Tip:</strong> Leave us a message and we will call you back during the day.<br><br><a href="services.html" class="cta-btn">See our services & pricing</a>');
+            setHtml('.contact-note p', '<strong>Tip:</strong> Leave us a message and we will call you back during the day.');
+            setText('.contact-bottom-cta .cta-btn', 'See our services & pricing');
         }
     }
 
