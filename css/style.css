@@ -70,9 +70,16 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
     gap: 2em;
     margin: 0;
     padding: 0;
+}
+
+nav ul > li {
+    display: flex;
+    align-items: center;
 }
 nav a {
     color: #fff;
@@ -84,9 +91,15 @@ nav a:hover {
     color: #e63946; /* Red accent on hover */
 }
 
-.insta-nav-item {
+.social-nav-item {
     display: flex;
     align-items: center;
+    gap: 0.45em;
+    margin-left: 0.2em;
+}
+
+.social-nav-item a {
+    margin-left: 0 !important;
 }
 
 .insta-corner-link {
@@ -95,9 +108,10 @@ nav a:hover {
     justify-content: center;
     width: 24px;
     height: 24px;
+    line-height: 0;
     color: #ffffff;
     opacity: 0.92;
-    margin-left: 0.1em;
+    margin-left: 0;
     transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -114,9 +128,35 @@ nav a:hover {
     fill: currentColor;
 }
 
+.youtube-corner-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    line-height: 0;
+    color: #ffffff;
+    opacity: 0.92;
+    margin-left: 0;
+    transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.youtube-corner-link:hover {
+    color: #ffd700;
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.youtube-corner-link svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .lang-switch-item {
     display: flex;
     align-items: center;
+    margin-left: 0.15em;
 }
 
 .lang-switch-btn {

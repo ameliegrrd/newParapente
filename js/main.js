@@ -143,13 +143,35 @@ document.addEventListener('keydown', function (event) {
 
 (function setupLanguageSwitch() {
     const KEY = 'pm_site_language';
+    const LANG_PARAM = 'lang';
+
+    function getLangFromUrl() {
+        try {
+            const value = new URLSearchParams(window.location.search).get(LANG_PARAM);
+            return value === 'en' ? 'en' : null;
+        } catch (error) {
+            return null;
+        }
+    }
 
     function getLang() {
+        const urlLang = getLangFromUrl();
+        if (urlLang) return urlLang;
         try {
             return localStorage.getItem(KEY) === 'en' ? 'en' : 'fr';
         } catch (error) {
             return 'fr';
         }
+    }
+
+    function updateUrlLangParam(lang) {
+        const url = new URL(window.location.href);
+        if (lang === 'en') {
+            url.searchParams.set(LANG_PARAM, 'en');
+        } else {
+            url.searchParams.delete(LANG_PARAM);
+        }
+        window.history.replaceState({}, '', url.toString());
     }
 
     function setLang(lang) {
@@ -158,6 +180,7 @@ document.addEventListener('keydown', function (event) {
         } catch (error) {
             // ignore
         }
+        updateUrlLangParam(lang);
     }
 
     function pageKey() {
@@ -192,6 +215,64 @@ document.addEventListener('keydown', function (event) {
         if (el) el.setAttribute('content', content);
     }
 
+    function setHref(selector, value) {
+        const el = document.querySelector(selector);
+        if (el) el.setAttribute('href', value);
+    }
+
+    function setJsonLd(selector, value) {
+        const el = document.querySelector(selector);
+        if (el) el.textContent = JSON.stringify(value);
+    }
+
+    function setAltList(selector, values) {
+        document.querySelectorAll(selector).forEach(function (item, index) {
+            if (values[index]) item.setAttribute('alt', values[index]);
+        });
+    }
+
+    function normalizeInternalHref(url) {
+        const filename = url.pathname.split('/').pop() || 'index.html';
+        return filename + url.search + url.hash;
+    }
+
+    function applyLangToInternalLinks(lang) {
+        document.querySelectorAll('a[href]').forEach(function (link) {
+            const rawHref = link.getAttribute('href');
+            if (!rawHref) return;
+            if (!/\.html(\?|#|$)/.test(rawHref)) return;
+            const url = new URL(rawHref, window.location.href);
+            if (lang === 'en') {
+                url.searchParams.set(LANG_PARAM, 'en');
+            } else {
+                url.searchParams.delete(LANG_PARAM);
+            }
+            link.setAttribute('href', normalizeInternalHref(url));
+        });
+    }
+
+    function upsertAlternateLink(hreflang, href) {
+        let link = document.querySelector('link[rel="alternate"][hreflang="' + hreflang + '"]');
+        if (!link) {
+            link = document.createElement('link');
+            link.setAttribute('rel', 'alternate');
+            link.setAttribute('hreflang', hreflang);
+            document.head.appendChild(link);
+        }
+        link.setAttribute('href', href);
+    }
+
+    function updateSeoLanguageLinks(lang) {
+        const baseUrl = window.location.origin + window.location.pathname;
+        const frUrl = baseUrl;
+        const enUrl = baseUrl + '?lang=en';
+
+        setHref('link[rel="canonical"]', lang === 'en' ? enUrl : frUrl);
+        upsertAlternateLink('fr', frUrl);
+        upsertAlternateLink('en', enUrl);
+        upsertAlternateLink('x-default', frUrl);
+    }
+
     function setNav(lang) {
         const labels = lang === 'en'
             ? ['Home', 'Our Team', 'Services & Pricing', 'Photos/Videos', 'FAQ', 'Contact']
@@ -205,13 +286,15 @@ document.addEventListener('keydown', function (event) {
             'contact.html'
         ];
         links.forEach(function (href, index) {
-            const link = document.querySelector('header nav a[href="' + href + '"]');
+            const link = document.querySelector('header nav a[href^="' + href + '"]');
             if (link) link.textContent = labels[index];
         });
     }
 
     function applyEnglish() {
         document.documentElement.lang = 'en';
+        applyLangToInternalLinks('en');
+        updateSeoLanguageLinks('en');
         setNav('en');
         setText('footer p', '© 2025 Parapente Meribel. All rights reserved.');
         const closeBtn = document.querySelector('.lightbox-close');
@@ -274,6 +357,11 @@ document.addEventListener('keydown', function (event) {
             setText('.home-offers .cta-btn', 'See all prices and options');
             setText('.gallery-preview h2', 'In pictures: the Parapente Meribel experience');
             setText('.gallery-preview .cta-link', 'See all photos');
+            setAltList('.gallery-thumbs img', [
+                'Paragliding takeoff in Meribel',
+                'Aerial view over the Meribel valley',
+                'Smiles during tandem flight'
+            ]);
             setText('.home-social h3', 'Follow us on Instagram');
             setText('.home-social p', 'Discover our latest flight photos and videos in Meribel.');
             setText('.home-social-link span', '@parapentemeribel');
@@ -285,17 +373,28 @@ document.addEventListener('keydown', function (event) {
         if (key === 'about.html') {
             document.title = 'Our Team - Parapente Meribel';
             setMeta('meta[name="description"]', 'Meet the Parapente Meribel team: Stephane and Pierre, professional pilots passionate about free flight in Meribel.');
+            setMeta('meta[property="og:title"]', 'Our Team - Parapente Meribel');
+            setMeta('meta[property="og:description"]', 'Meet Stephane, Pierre, Sarah and Djampal at Parapente Meribel.');
             setText('.about h1', 'Our Team');
             setHtml('.about > p', 'At <strong>Parapente Meribel</strong>, you are in good hands.<br>Meet the people behind your unforgettable flights.');
             setText('.team-member:nth-of-type(1) p', 'State-certified pilot, passionate about paragliding for over 35 years. Stephane loves sharing his passion and helping everyone discover the magic of free flight.');
             setText('.team-member:nth-of-type(2) p', 'Professional pilot, reassuring and educational, Pierre guides you for a first flight or a thrill flight, in a warm and friendly atmosphere.');
             setText('.team-member:nth-of-type(3) p', 'Team secretary, Sarah manages bookings and coordinates communication with guests so each flight is prepared smoothly and efficiently.');
             setText('.team-member:nth-of-type(4) p', 'Employed pilot at Parapente Meribel for over 15 years, Djampal is an experienced pilot, educational, and always attentive to passengers.');
+            setAltList('.team-member img', [
+                'Stephane, paragliding pilot in Meribel',
+                'Pierre, paragliding pilot in Meribel',
+                'Sarah, secretary at Parapente Meribel',
+                'Djampal, pilot at Parapente Meribel'
+            ]);
             setText('.about .cta-link', 'Contact us to learn more');
         }
 
         if (key === 'services.html') {
             document.title = 'Services & Pricing - Parapente Meribel';
+            setMeta('meta[name="description"]', 'Tandem flights, first flights, options and prices in Meribel. Discover all our flight packages.');
+            setMeta('meta[property="og:title"]', 'Services & Pricing - Parapente Meribel');
+            setMeta('meta[property="og:description"]', 'Discover our tandem flight packages and options in Meribel.');
             setText('.services-preview h1', 'Services & Pricing');
             setHtml('.services-preview > p', 'Our flight packages vary by season and your preferences.<br>All flights are supervised by state-certified pilots, safety equipment is provided and transport to takeoff is included.');
             setText('.service-discovery .service-tag', 'Most requested');
@@ -331,11 +430,39 @@ document.addEventListener('keydown', function (event) {
 
         if (key === 'gallery.html') {
             document.title = 'Gallery - Parapente Meribel';
+            setMeta('meta[name="description"]', 'Photo and video gallery of tandem paragliding flights in Meribel.');
+            setMeta('meta[property="og:title"]', 'Gallery - Parapente Meribel');
+            setMeta('meta[property="og:description"]', 'Discover paragliding flights in Meribel through photos.');
             setText('.gallery-page-panel h1', 'Photo gallery');
+            setAltList('.gallery-grid img', [
+                'Paragliding takeoff in Meribel',
+                'Pre-flight preparation',
+                'Flight above the mountains',
+                'Paraglider wing in a blue sky',
+                'Tandem paragliding flight',
+                'View over the valley',
+                'Paragliding at sunset',
+                'Mountain takeoff',
+                'High-altitude paragliding',
+                'Panoramic view',
+                'Landing near the chalet',
+                'Takeoff preparation',
+                'Green wing at altitude',
+                'Pink and white wing',
+                'Red paraglider in flight',
+                'Yellow paraglider over the valley',
+                'Yellow and green paraglider',
+                'Green paraglider at altitude',
+                'Sky-blue paraglider',
+                'Green and red paraglider'
+            ]);
         }
 
         if (key === 'faq.html') {
             document.title = 'FAQ - Parapente Meribel';
+            setMeta('meta[name="description"]', 'Frequently asked questions about paragliding in Meribel: safety, weather, booking, meeting points and more.');
+            setMeta('meta[property="og:title"]', 'FAQ - Parapente Meribel');
+            setMeta('meta[property="og:description"]', 'All answers to your questions before your paragliding flight in Meribel.');
             setText('.faq-section h1', 'FAQ - Frequently Asked Questions');
             const faqItems = document.querySelectorAll('.faq-item');
             const faqQuestions = [
@@ -375,10 +502,68 @@ document.addEventListener('keydown', function (event) {
                     answer.innerHTML = faqAnswers[index];
                 }
             });
+
+            setJsonLd('script[type="application/ld+json"]', {
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: [
+                    {
+                        '@type': 'Question',
+                        name: 'Is paragliding accessible to everyone?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Tandem paragliding can be practiced from about age 7 to 77 and beyond, with a minimum weight of 25 kg and adaptations depending on conditions and passenger profile.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How to book?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'By phone, WhatsApp, or via the Contact page. No bookings are made through social media.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'Do you feel vertigo while paragliding?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Usually no. In flight there is no fixed ground reference, so the sensation is very different from classic vertigo.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'At what altitude will we fly?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Each flight is different. We often reach between 2600 and 3000 m depending on weather and aerological conditions.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'What happens in case of cancellation?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'If cancellation comes from us for safety or weather reasons, you are refunded 100%. If cancellation comes from you, refund is possible with at least 24-hour notice.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How does landing work?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Landing depends on wind conditions and pilot anticipation. The passenger has no strict instruction and can stay seated if needed.'
+                        }
+                    }
+                ]
+            });
         }
 
         if (key === 'contact.html') {
             document.title = 'Contact & Bookings - Parapente Meribel';
+            setMeta('meta[name="description"]', 'Contact Parapente Meribel to book your tandem flight, ask questions, or organize an event.');
+            setMeta('meta[property="og:title"]', 'Contact & Bookings - Parapente Meribel');
+            setMeta('meta[property="og:description"]', 'Book your tandem paragliding flight in Meribel.');
             setText('.contact-section h1', 'Contact & Bookings');
             setText('.contact-section > p', 'To book a flight, ask a question, or organize an event, contact us directly:');
             setText('.contact-card:nth-of-type(1) h2', 'Our Secretary');
@@ -401,6 +586,8 @@ document.addEventListener('keydown', function (event) {
 
     function applyFrench() {
         document.documentElement.lang = 'fr';
+        applyLangToInternalLinks('fr');
+        updateSeoLanguageLinks('fr');
         location.reload();
     }
 
@@ -436,37 +623,49 @@ document.addEventListener('keydown', function (event) {
         }
     }
 
-    function setupInstagramCornerLink() {
+    function setupSocialNavLinks() {
         const navList = document.querySelector('header nav ul');
-        if (!navList || navList.querySelector('.insta-corner-link')) return;
+        if (!navList || navList.querySelector('.social-nav-item')) return;
 
-        const link = document.createElement('a');
-        link.className = 'insta-corner-link';
-        link.href = 'https://www.instagram.com/parapentemeribel/';
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.setAttribute('aria-label', 'Instagram Parapente Meribel');
-        link.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>';
+        const socialItem = document.createElement('li');
+        socialItem.className = 'social-nav-item';
 
-        const item = document.createElement('li');
-        item.className = 'insta-nav-item';
-        item.appendChild(link);
+        const instagramLink = document.createElement('a');
+        instagramLink.className = 'insta-corner-link';
+        instagramLink.href = 'https://www.instagram.com/parapentemeribel/';
+        instagramLink.target = '_blank';
+        instagramLink.rel = 'noopener noreferrer';
+        instagramLink.setAttribute('aria-label', 'Instagram Parapente Meribel');
+        instagramLink.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>';
+
+        const youtubeLink = document.createElement('a');
+        youtubeLink.className = 'youtube-corner-link';
+        youtubeLink.href = 'https://www.youtube.com/watch?v=l1WNY80ole0';
+        youtubeLink.target = '_blank';
+        youtubeLink.rel = 'noopener noreferrer';
+        youtubeLink.setAttribute('aria-label', 'YouTube video');
+        youtubeLink.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="0.6" y="3.7" width="22.8" height="16.6" rx="3.8" ry="3.8" fill="none" stroke="currentColor" stroke-width="1.8"></rect><path d="M8.8 8.1v7.8l6.8-3.9-6.8-3.9z" fill="currentColor"></path></svg>';
+
+        socialItem.appendChild(instagramLink);
+        socialItem.appendChild(youtubeLink);
 
         const langItem = navList.querySelector('.lang-switch-item');
         if (langItem) {
-            navList.insertBefore(item, langItem);
+            navList.insertBefore(socialItem, langItem);
         } else {
-            navList.appendChild(item);
+            navList.appendChild(socialItem);
         }
     }
 
     setupSwitchUI();
-    setupInstagramCornerLink();
+    setupSocialNavLinks();
 
     if (getLang() === 'en') {
         applyEnglish();
     } else {
         document.documentElement.lang = 'fr';
+        applyLangToInternalLinks('fr');
+        updateSeoLanguageLinks('fr');
         setNav('fr');
     }
 })();
