@@ -213,6 +213,7 @@ header nav ul a {
     .social-nav-item {
         margin-left: 0;
     }
+
 }
 
 /* ========== HERO SECTION ========== */
@@ -713,6 +714,10 @@ footer {
     text-align: center;
 }
 
+.gallery-page #lightbox-caption {
+    display: none;
+}
+
 /* ========== BOTTOM CALL TO ACTION ========== */
 .cta-bottom {
     max-width: 700px;
@@ -742,6 +747,44 @@ footer {
     border: 1px solid rgba(30, 144, 255, 0.12);
     border-radius: 20px;
     box-shadow: 0 10px 24px rgba(30, 144, 255, 0.12);
+}
+
+.gallery-video-preview {
+    max-width: 900px;
+    margin: 0.8em auto 1.4em;
+    padding: 0 1em;
+    text-align: center;
+}
+
+.gallery-video-preview h2 {
+    color: #1e90ff;
+    margin: 0 0 0.35em;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+.gallery-video-preview p {
+    margin: 0 0 0.9em;
+    color: #304258;
+    font-size: 1.03em;
+}
+
+.gallery-video-preview .video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 144, 255, 0.18);
+    box-shadow: 0 10px 22px rgba(30, 144, 255, 0.14);
+    background: #0b1d33;
+}
+
+.gallery-video-preview .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 .gallery-grid {
@@ -1054,6 +1097,37 @@ body.home-bg {
     color: #222831;
 }
 
+.services-page .flight-details {
+    margin: 1.4em auto 1.4em auto;
+    max-width: 760px;
+    background: #ffffff;
+    border: 1px solid rgba(30, 144, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(30, 144, 255, 0.08);
+    padding: 1.45em 1.2em;
+    text-align: center;
+}
+
+.services-page .flight-details h3 {
+    margin-top: 0;
+    margin-bottom: 0.7em;
+    color: #1e90ff;
+}
+
+.services-page .flight-details h4 {
+    margin: 1em 0 0.35em;
+    color: #22324a;
+    font-size: 1.04em;
+}
+
+.services-page .flight-details p {
+    margin: 0 0 0.55em;
+    color: #22324a;
+    font-size: 1.02em;
+    line-height: 1.45;
+    text-align: justify;
+}
+
 .services-page .inline-contact-btn {
     display: inline;
     margin-left: 0.35em;
@@ -1328,6 +1402,18 @@ body.home-bg {
     max-width: 700px;
 }
 
+.faq-section .resource-download-wrap {
+    max-width: 700px;
+    margin: 1.05em auto 1.55em;
+}
+
+.faq-section .resource-download {
+    display: block;
+    font-size: 0.96rem;
+    line-height: 1.35;
+    text-align: center;
+}
+
 .faq-item {
     margin-bottom: 1em;
     background: #ffffff;
@@ -1388,5 +1474,22 @@ body.home-bg {
     line-height: 1.5;
     margin: 0;
     padding: 0 1.05em 1.1em 1.05em;
+}
+
+.resource-download-wrap {
+    margin: 1em 0 0.35em;
+    text-align: center;
+}
+
+.resource-download {
+    display: inline-block;
+    color: #e63946;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.resource-download:hover {
+    color: #1e90ff;
 }
 

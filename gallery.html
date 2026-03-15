@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 </head>
-<body class="home-bg">
+<body class="home-bg gallery-page">
 <header>
     <nav>
         <ul>
@@ -33,6 +33,20 @@
 
 <main>
     <section class="gallery-page-panel">
+        <div class="gallery-video-preview">
+            <h2>Aperçu vidéo</h2>
+            <p>Découvrez un extrait de l'expérience en vol à Méribel.</p>
+            <div class="video-frame">
+                <iframe
+                    src="https://www.youtube.com/embed/l1WNY80ole0?rel=0"
+                    title="Vidéo Parapente Méribel"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
         <h1>Galerie photos</h1>
         <div class="gallery-grid">
             <img src="images/parapente1.jpeg" alt="Décollage parapente à Méribel" width="1200" height="800" loading="lazy" decoding="async" onclick="openLightbox(this.src, this.alt)">

@@ -417,6 +417,8 @@ document.addEventListener('keydown', function (event) {
             setText('.service-premium .service-price', '300 € / flight');
             setText('.service-premium summary', 'Learn more');
             setHtml('.service-premium details', '<summary>Learn more</summary><p>Flight duration: around 45 minutes</p><p>Accessible from age 5, no experience required</p><p class="meeting-slot"><strong>In the morning:</strong> meet at the Tougnette gondola departure, on the Chaudanne plateau.</p><p class="meeting-slot"><strong>In the afternoon:</strong> meet at the Rhodos aerial parking area, at the entrance to the Chaudanne plateau, near the roundabout.</p><p>Photos and videos available as an option</p>');
+            setHtml('.flight-details', '<h3>Flight details</h3><h4>In the morning</h4><p>900 m vertical flight from the top of Tougnette, in calm and/or rising conditions.</p><p>Ascent by gondola, then chairlift (if you already have a lift pass, we deduct the ascent cost from the flight price).</p><p>This flight is focused on an aerial tour over the Cherferie ridges toward Roc de Fer. Flying closer to the terrain during a large part of the route often allows wildlife observation (chamois, hinds and deer).</p><p>Conditions are sometimes strong enough to climb above Roc de Fer and then cross the valley.</p><p>If the forecast wind is from the west, the flight is moved to the Saulire sector.</p><h4>In the afternoon</h4><p>900 m vertical flight in the altiport sector, between Saulire and Col de la Loze.</p><p>Often in rising air, this flight also offers a beautiful aerial tour, with optional passenger piloting on request and/or stronger sensations for thrill-seekers.</p><h4>Common landing area for both sites</h4><p>Landing is next to the Saulire Express gondola departure station, on the Corbey slalom stadium landing area.</p><p>The meeting point is very close to the entrance of the Chaudanne leisure area. Free summer parking is nearby (toward the tunnel entrance).</p>');
+            setText('.flight-details .resource-download', 'Click here to get all the answers you need (downloadable PDF)');
             setText('.options h3', 'Options & Info');
             setListHtml('.options ul li', [
                 'HD video & photos of your flight: <strong>30 €</strong>',
@@ -433,6 +435,8 @@ document.addEventListener('keydown', function (event) {
             setMeta('meta[name="description"]', 'Photo and video gallery of tandem paragliding flights in Meribel.');
             setMeta('meta[property="og:title"]', 'Gallery - Parapente Meribel');
             setMeta('meta[property="og:description"]', 'Discover paragliding flights in Meribel through photos.');
+            setText('.gallery-video-preview h2', 'Video preview');
+            setText('.gallery-video-preview p', 'Watch a short preview of the flight experience in Meribel.');
             setText('.gallery-page-panel h1', 'Photo gallery');
             setAltList('.gallery-grid img', [
                 'Paragliding takeoff in Meribel',
@@ -464,6 +468,7 @@ document.addEventListener('keydown', function (event) {
             setMeta('meta[property="og:title"]', 'FAQ - Parapente Meribel');
             setMeta('meta[property="og:description"]', 'All answers to your questions before your paragliding flight in Meribel.');
             setText('.faq-section h1', 'FAQ - Frequently Asked Questions');
+            setText('.faq-section > .resource-download-wrap .resource-download', 'Click here to get all the answers you need (downloadable PDF)');
             const faqItems = document.querySelectorAll('.faq-item');
             const faqQuestions = [
                 'Do you feel vertigo while paragliding?',
