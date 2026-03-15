@@ -55,7 +55,7 @@
     </section>
 
     <section class="day-flow">
-        <h2>Déroulé clair de votre journée</h2>
+        <h2>Déroulé clair de votre expérience</h2>
         <ol class="roadmap">
             <li class="roadmap-step">
                 <span class="step-number">1</span>
@@ -63,7 +63,7 @@
             </li>
             <li class="roadmap-step">
                 <span class="step-number">2</span>
-                <p>Montée en 4x4 jusqu'au décollage</p>
+                <p>Montée en 4x4 ou en télécabine jusqu'au décollage</p>
             </li>
             <li class="roadmap-step">
                 <span class="step-number">3</span>
@@ -90,10 +90,10 @@
                 <p>Un baptême de l'air accessible à tous, idéal pour une première fois inoubliable au-dessus de Méribel.</p>
                 <ul class="offer-points">
                     <li>Chaque vol est différent</li>
-                    <li>Tour de la vallée de Méribel</li>
+                    <li>Vue panoramique sur toute la vallée de Méribel</li>
                     <li>Sensations douces et/ou fortes</li>
                 </ul>
-                <div class="price">À partir de 140 EUR</div>
+                <div class="price">À partir de 140 €</div>
             </article>
             <article class="service-item offer-card premium-card">
                 <span class="offer-badge">Expérience premium</span>
@@ -104,7 +104,7 @@
                     <li>Parcours panoramique multi-vallées</li>
                     <li>Souvenir fort à offrir ou à vivre</li>
                 </ul>
-                <div class="price">À partir de 300 EUR</div>
+                <div class="price">À partir de 300 €</div>
             </article>
         </div>
         <p class="offers-reassurance">Places limitées selon la météo. Réservez en avance pour garantir votre créneau.</p>
@@ -123,6 +123,12 @@
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" type="button" aria-label="Fermer la galerie" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="Image précédente" onclick="onLightboxNavClick('prev', event)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6.5 9 12l5.5 5.5"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="Image suivante" onclick="onLightboxNavClick('next', event)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 6.5 15 12l-5.5 5.5"/></svg>
+        </button>
         <img id="lightbox-img" src="" alt="">
         <div id="lightbox-caption"></div>
     </div>
@@ -131,6 +137,17 @@
         <h2>Prêt à vivre l'aventure ?</h2>
         <p>Contactez-nous dès aujourd'hui pour réserver votre vol ou poser vos questions. Nous sommes là pour vous accompagner dans cette expérience inoubliable à Méribel !</p>
         <a href="contact.html" class="cta-btn">Réservez votre vol maintenant</a>
+    </section>
+
+    <section class="contact-social home-social">
+        <h3>Suivez-nous sur Instagram</h3>
+        <p>Retrouvez nos dernières photos et vidéos de vols à Méribel.</p>
+        <a class="contact-social-link home-social-link" href="https://www.instagram.com/parapentemeribel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Parapente Méribel">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+            <span>@parapentemeribel</span>
+        </a>
     </section>
 </main>
 

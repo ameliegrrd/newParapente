@@ -57,6 +57,12 @@
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" type="button" aria-label="Fermer la galerie" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav lightbox-nav-prev" type="button" aria-label="Image précédente" onclick="onLightboxNavClick('prev', event)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 6.5 9 12l5.5 5.5"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-nav-next" type="button" aria-label="Image suivante" onclick="onLightboxNavClick('next', event)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 6.5 15 12l-5.5 5.5"/></svg>
+        </button>
         <img id="lightbox-img" src="" alt="">
         <div id="lightbox-caption"></div>
     </div>
