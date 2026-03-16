@@ -449,9 +449,10 @@ document.addEventListener('keydown', function (event) {
                 'Aerial panorama of mountain peaks around Meribel',
                 'Winter paragliding view above Meribel',
                 'Preparing equipment before takeoff',
+                'Pre-flight preparation before tandem paragliding',
                 'Two paragliders flying above Meribel',
-                'Paragliding takeoff in Meribel',
-                'Pre-flight preparation',
+                'Mountain panorama around Meribel',
+                'Marmot in the Meribel mountains',
                 'Flight above the mountains',
                 'Paraglider wing in a blue sky',
                 'Tandem paragliding flight',
@@ -469,7 +470,11 @@ document.addEventListener('keydown', function (event) {
                 'Yellow and green paraglider',
                 'Green paraglider at altitude',
                 'Sky-blue paraglider',
-                'Green and red paraglider'
+                'Green and red paraglider',
+                'Paraglider flying above Meribel',
+                'High-altitude flight above alpine relief',
+                'Paraglider with a view of alpine summits',
+                'Panoramic paragliding flight above Meribel'
             ]);
         }
 
@@ -525,22 +530,6 @@ document.addEventListener('keydown', function (event) {
                 mainEntity: [
                     {
                         '@type': 'Question',
-                        name: 'Is paragliding accessible to everyone?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Tandem paragliding can be practiced from about age 7 to 77 and beyond, with a minimum weight of 25 kg and adaptations depending on conditions and passenger profile.'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'How to book?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'By phone, WhatsApp, or via the Contact page. No bookings are made through social media.'
-                        }
-                    },
-                    {
-                        '@type': 'Question',
                         name: 'Do you feel vertigo while paragliding?',
                         acceptedAnswer: {
                             '@type': 'Answer',
@@ -549,10 +538,50 @@ document.addEventListener('keydown', function (event) {
                     },
                     {
                         '@type': 'Question',
+                        name: 'What should I bring?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Bring weather-appropriate clothing, closed shoes and sunglasses. Helmet and some equipment can be provided.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
                         name: 'At what altitude will we fly?',
                         acceptedAnswer: {
                             '@type': 'Answer',
-                            text: 'Each flight is different. We often reach between 2600 and 3000 m depending on weather and aerological conditions.'
+                            text: 'Each flight depends on weather and aerological conditions. Reaching 2600 to 3000 m is common.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'Is paragliding accessible to everyone?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Tandem paragliding is accessible to a wide public, depending on age, weight and daily conditions.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'Takeoff: do we need to jump off a cliff?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'No. Takeoff is progressive: wing preparation, inflation and a short run to load the wing.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How does landing work?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Landing depends on wind conditions and pilot anticipation. The passenger has no strict instruction and can stay seated if needed.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'What happens in case of bad weather?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Safety comes first: flights are postponed or canceled at no cost when conditions are unsuitable.'
                         }
                     },
                     {
@@ -565,10 +594,26 @@ document.addEventListener('keydown', function (event) {
                     },
                     {
                         '@type': 'Question',
-                        name: 'How does landing work?',
+                        name: 'Can we take photos or videos during the flight?',
                         acceptedAnswer: {
                             '@type': 'Answer',
-                            text: 'Landing depends on wind conditions and pilot anticipation. The passenger has no strict instruction and can stay seated if needed.'
+                            text: 'Yes. You can bring your own phone/camera and we also offer a GoPro photo/video option.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How to book?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'By phone, WhatsApp, or via the Contact page. No bookings are made through social media.'
+                        }
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'Where is the meeting point?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Morning: Tougnette gondola departure. Afternoon: Rhodos aerial parking area at the entrance of the Chaudanne plateau.'
                         }
                     }
                 ]
