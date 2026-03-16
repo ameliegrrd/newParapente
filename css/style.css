@@ -456,7 +456,7 @@ footer {
 
 @media (max-width: 980px) {
     .day-flow {
-        padding: 1.6em 1.2em 1.8em;
+        padding: 1.25em 0.9em 1.35em;
         border-radius: 18px;
     }
 
@@ -469,7 +469,7 @@ footer {
 
     .roadmap-step {
         min-height: 0;
-        padding: 1.1em 1em;
+        padding: 0.85em 0.8em 0.75em;
     }
 
     .roadmap-step:not(:last-child)::after {
@@ -480,6 +480,49 @@ footer {
         bottom: -0.9em;
         transform: translateX(-50%);
         font-size: 1.25em;
+    }
+
+    .step-number {
+        width: 38px;
+        height: 38px;
+        font-size: 1em;
+        margin-bottom: 0.55em;
+    }
+
+    .roadmap-step p {
+        font-size: 1.02em;
+        line-height: 1.32;
+        max-width: 28ch;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .day-flow {
+        padding: 1.05em 0.45em 1.15em;
+    }
+
+    .roadmap {
+        gap: 0.75em;
+    }
+
+    .roadmap-step {
+        padding: 0.72em 0.55em 0.65em;
+        border-radius: 16px;
+    }
+
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.96em;
+        margin-bottom: 0.45em;
+    }
+
+    .roadmap-step p {
+        font-size: 0.98em;
+        line-height: 1.28;
+        max-width: 30ch;
+        min-height: 0;
     }
 }
 
@@ -995,17 +1038,67 @@ body.home-bg {
 
 @media (max-width: 900px) {
     body.home-bg {
+        background: #dfe8f4;
+    }
+
+    body.home-bg .hero {
         background:
-            linear-gradient(rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.10)),
-            url('../images/fondbas.jpg') no-repeat center 32% scroll;
+            linear-gradient(rgba(12, 22, 36, 0.22), rgba(12, 22, 36, 0.32)),
+            url('../images/burgin-meribel.jpg') no-repeat center 42%;
         background-size: cover;
-        background-color: #dbe8f8;
+        border-radius: 0 0 22px 22px;
+        overflow: hidden;
+        margin-bottom: 1.4em;
+    }
+
+    body.home-bg .hero h1 {
+        color: #ffffff;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+    }
+
+    body.home-bg .hero p {
+        color: #f4f8ff;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
     }
 }
 
 @media (max-width: 600px) {
-    body.home-bg {
-        background-position: center 36%;
+    body.home-bg.home-page main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.home-bg.home-page .hero { order: 1; }
+    body.home-bg.home-page .about { order: 2; }
+    body.home-bg.home-page .home-local-videos { order: 3; }
+    body.home-bg.home-page .why-us { order: 4; }
+    body.home-bg.home-page .day-flow { order: 5; }
+    body.home-bg.home-page .services-preview.home-offers { order: 6; }
+    body.home-bg.home-page .gallery-preview { order: 7; }
+    body.home-bg.home-page .cta-bottom { order: 8; }
+    body.home-bg.home-page .contact-social.home-social { order: 9; }
+
+    body.home-bg.home-page .about,
+    body.home-bg.home-page .why-us,
+    body.home-bg.home-page .home-local-videos,
+    body.home-bg.home-page .day-flow,
+    body.home-bg.home-page .services-preview.home-offers,
+    body.home-bg.home-page .gallery-preview,
+    body.home-bg.home-page .cta-bottom,
+    body.home-bg.home-page .contact-social.home-social {
+        margin-top: 0.85em;
+        margin-bottom: 0.85em;
+    }
+
+    body.home-bg.home-page .hero {
+        padding-top: 1.4em;
+        padding-bottom: 1.8em;
+        background-position: center 38%;
+    }
+
+    body.home-bg.home-page .hero p {
+        color: #ffffff;
+        font-weight: 600;
     }
 }
 
