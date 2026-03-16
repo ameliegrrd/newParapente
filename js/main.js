@@ -296,7 +296,7 @@ document.addEventListener('keydown', function (event) {
         applyLangToInternalLinks('en');
         updateSeoLanguageLinks('en');
         setNav('en');
-        setText('footer p', '© 2025 Parapente Meribel. All rights reserved.');
+        setText('footer p', '© 2026 Parapente Meribel. All rights reserved.');
         const closeBtn = document.querySelector('.lightbox-close');
         if (closeBtn) closeBtn.setAttribute('aria-label', 'Close gallery');
         const prevBtn = document.querySelector('.lightbox-nav-prev');
@@ -362,7 +362,7 @@ document.addEventListener('keydown', function (event) {
             setText('.gallery-preview h2', 'In pictures: the Parapente Meribel experience');
             setText('.gallery-preview .cta-link', 'See all photos');
             setAltList('.gallery-thumbs img', [
-                'Tandem passenger flying above Meribel',
+                'Two paragliders flying above Meribel',
                 'Aerial panorama of mountain peaks around Meribel',
                 'Winter paragliding view above Meribel'
             ]);
@@ -582,7 +582,7 @@ document.addEventListener('keydown', function (event) {
             setMeta('meta[property="og:description"]', 'Book your tandem paragliding flight in Meribel.');
             setText('.contact-section h1', 'Contact & Bookings');
             setText('.contact-section > p', 'To book a flight, ask a question, or organize an event, contact us directly:');
-            setText('.contact-card:nth-of-type(1) h2', 'Our Secretary');
+            setText('.contact-card:nth-of-type(1) h2', 'Our Secretary (Sarah)');
             setText('.contact-card:nth-of-type(1) .contact-card-subnote', '*Available during daytime.');
             setHtml('.contact-card:nth-of-type(1) > p:last-child', '<strong>Phone:</strong> <a href="tel:0479086725">04 79 08 67 25</a>');
             setText('.contact-card:nth-of-type(2) h2', 'Stephane Gorrand');
