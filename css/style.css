@@ -49,7 +49,9 @@ html {
 
 /* ========== HEADER & NAVIGATION ========== */
 header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1100;
     background: #1e90ff;
     padding: 30px 40px;
     box-shadow: 0 2px 8px rgba(30, 144, 255, 0.08);
@@ -57,6 +59,7 @@ header {
 header .logo img {
     height: 48px;
 }
+
 header nav a {
     color: #fff;
     text-decoration: none;
@@ -217,9 +220,6 @@ header nav ul a {
 @media (max-width: 600px) {
     header {
         padding: 18px 14px;
-        position: sticky;
-        top: 0;
-        z-index: 1100;
     }
 
     nav ul {
@@ -996,10 +996,16 @@ body.home-bg {
 @media (max-width: 900px) {
     body.home-bg {
         background:
-            linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.12)),
-            url('../images/fondcentre.jpg') no-repeat center 22% scroll;
+            linear-gradient(rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.10)),
+            url('../images/fondbas.jpg') no-repeat center 32% scroll;
         background-size: cover;
         background-color: #dbe8f8;
+    }
+}
+
+@media (max-width: 600px) {
+    body.home-bg {
+        background-position: center 36%;
     }
 }
 

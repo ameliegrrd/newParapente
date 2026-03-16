@@ -119,6 +119,37 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
+(function setupVideoAutoFullscreen() {
+    function requestVideoFullscreen(video) {
+        if (!video) return;
+
+        if (document.fullscreenElement === video || document.fullscreenElement) {
+            return;
+        }
+
+        if (typeof video.requestFullscreen === 'function') {
+            video.requestFullscreen().catch(function () {
+                // Ignore fullscreen failures (browser policy/device limitations).
+            });
+            return;
+        }
+
+        if (typeof video.webkitEnterFullscreen === 'function') {
+            try {
+                video.webkitEnterFullscreen();
+            } catch (error) {
+                // Ignore iOS fullscreen errors.
+            }
+        }
+    }
+
+    document.querySelectorAll('video').forEach(function (video) {
+        video.addEventListener('play', function () {
+            requestVideoFullscreen(video);
+        });
+    });
+})();
+
 (function setupPageTransitions() {
     const main = document.querySelector('main');
     if (!main) return;
