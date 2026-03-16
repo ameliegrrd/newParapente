@@ -7,6 +7,18 @@ body {
     padding: 0;
 }
 
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* ========== PAGE TRANSITIONS ========== */
 .page-transition-ready {
     transition: transform 200ms ease;
@@ -278,6 +290,7 @@ footer {
 /* ========== ABOUT & WHY US SECTIONS ========== */
 .about, .why-us {
     max-width: 800px;
+    width: min(800px, calc(100% - 2rem));
     margin: 3em auto;
     padding: 2em;
     background: #fff;
@@ -305,6 +318,7 @@ footer {
 /* ========== HOME DAY FLOW ========== */
 .day-flow {
     max-width: 1100px;
+    width: min(1100px, calc(100% - 2rem));
     margin: 3em auto;
     padding: 2.2em 2em 2.4em;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(247, 250, 255, 0.95) 100%);
@@ -534,6 +548,7 @@ footer {
 /* ========== SERVICES PREVIEW SECTION ========== */
 .services-preview {
     max-width: 1000px;
+    width: min(1000px, calc(100% - 2rem));
     margin: 3em auto;
     padding: 2em;
     background: #f8f9fa;
@@ -725,6 +740,7 @@ footer {
 /* ========== BOTTOM CALL TO ACTION ========== */
 .cta-bottom {
     max-width: 700px;
+    width: min(700px, calc(100% - 2rem));
     margin: 3em auto 0 auto;
     padding: 2.5em 1.5em;
     background: #ffffff;
@@ -745,6 +761,7 @@ footer {
 /* ========== FULL GALLERY PAGE GRID ========== */
 .gallery-page-panel {
     max-width: 1240px;
+    width: min(1240px, calc(100% - 2rem));
     margin: 2.2em auto;
     padding: 1.2em 0.2em 1.5em;
     background: rgba(255, 255, 255, 0.94);
@@ -800,6 +817,7 @@ footer {
 
 .home-local-videos {
     max-width: 760px;
+    width: min(760px, calc(100% - 2rem));
     margin: 2.1em auto 1.6em;
     padding: 1.7em 1.2em 1.8em;
     background: rgba(255, 255, 255, 0.95);
@@ -927,7 +945,10 @@ body.home-bg {
 @media (max-width: 900px) {
     body.home-bg {
         background-attachment: scroll;
-        background-position: center top;
+        background-position: center top, center top;
+        background-repeat: no-repeat, no-repeat;
+        background-size: 100% 100%, contain;
+        background-color: #dbe8f8;
     }
 }
 
@@ -990,6 +1011,7 @@ body.home-bg {
 
 .services-page .services-preview {
     max-width: 1060px;
+    width: min(1060px, calc(100% - 2rem));
     margin: 3em auto 2em auto;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 250, 255, 0.96));
     border: 1px solid rgba(30, 144, 255, 0.12);
@@ -1136,6 +1158,7 @@ body.home-bg {
 .services-page .options {
     margin: 2em auto 1.5em auto;
     max-width: 760px;
+    width: min(760px, calc(100% - 2rem));
     background: #ffffff;
     border: 1px solid rgba(30, 144, 255, 0.16);
     border-radius: 16px;
@@ -1174,6 +1197,7 @@ body.home-bg {
 .services-page .flight-details {
     margin: 1.4em auto 1.4em auto;
     max-width: 760px;
+    width: min(760px, calc(100% - 2rem));
     background: #ffffff;
     border: 1px solid rgba(30, 144, 255, 0.16);
     border-radius: 16px;
@@ -1299,6 +1323,7 @@ body.home-bg {
 
 .contact-section {
     max-width: 1080px;
+    width: min(1080px, calc(100% - 2rem));
     margin: 3.2em auto 2.2em auto;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 255, 0.96));
     border: 1px solid rgba(30, 144, 255, 0.12);

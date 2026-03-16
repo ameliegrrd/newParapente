@@ -1,3 +1,10 @@
 RewriteEngine On
+
+# Force canonical host + HTTPS
+RewriteCond %{HTTP_HOST} ^www\.parapentemeribel\.net$ [NC,OR]
 RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^ https://parapentemeribel.net%{REQUEST_URI} [L,R=301]
+
+# Normalize home URL
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ https://parapentemeribel.net/ [L,R=301]
