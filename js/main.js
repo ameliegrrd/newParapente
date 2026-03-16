@@ -683,6 +683,69 @@ document.addEventListener('keydown', function (event) {
         }
     }
 
+    function setupMobileNavMenu() {
+        const navList = document.querySelector('header nav ul');
+        if (!navList || navList.querySelector('.mobile-menu-item')) return;
+
+        const collapsiblePrefixes = ['index.html', 'about.html', 'services.html', 'gallery.html', 'faq.html'];
+        const allItems = Array.from(navList.querySelectorAll(':scope > li'));
+
+        allItems.forEach(function (item) {
+            const link = item.querySelector('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href') || '';
+
+            if (collapsiblePrefixes.some(function (prefix) { return href.startsWith(prefix); })) {
+                item.classList.add('mobile-collapse-item');
+            }
+
+            if (href.startsWith('contact.html')) {
+                item.classList.add('mobile-keep-item');
+            }
+        });
+
+        const menuItem = document.createElement('li');
+        menuItem.className = 'mobile-menu-item';
+
+        const menuBtn = document.createElement('button');
+        menuBtn.type = 'button';
+        menuBtn.className = 'mobile-menu-toggle';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Ouvrir le menu');
+        menuBtn.textContent = '☰ Menu';
+
+        menuBtn.addEventListener('click', function () {
+            const isOpen = navList.classList.toggle('nav-mobile-open');
+            menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        menuItem.appendChild(menuBtn);
+        navList.insertBefore(menuItem, navList.firstChild);
+
+        navList.addEventListener('click', function (event) {
+            const clickedLink = event.target.closest('a');
+            const clickedCollapsible = clickedLink && clickedLink.closest('li.mobile-collapse-item');
+            if (!clickedCollapsible) return;
+            navList.classList.remove('nav-mobile-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!window.matchMedia('(max-width: 600px)').matches) return;
+            if (!navList.contains(event.target)) {
+                navList.classList.remove('nav-mobile-open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        window.addEventListener('resize', function () {
+            if (!window.matchMedia('(max-width: 600px)').matches) {
+                navList.classList.remove('nav-mobile-open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
     function setupSocialNavLinks() {
         const navList = document.querySelector('header nav ul');
         if (!navList || navList.querySelector('.social-nav-item')) return;
@@ -717,6 +780,7 @@ document.addEventListener('keydown', function (event) {
         }
     }
 
+    setupMobileNavMenu();
     setupSwitchUI();
     setupSocialNavLinks();
 
