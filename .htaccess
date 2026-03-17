@@ -2,7 +2,7 @@ RewriteEngine On
 
 # Redirect legacy PHP homepage URL
 RewriteRule ^index\.php$ https://parapentemeribel.net/ [L,R=301,NC]
-RewriteRule ^index\.php/prestations-par-saison-et-tarifs/?$ https://parapentemeribel.net/services.html [L,R=301,NC]
+RewriteRule ^index\.php/prestations-par-saison-et-tarifs/?$ https://parapentemeribel.net/ [L,R=301,NC]
 
 # Force canonical host + HTTPS
 RewriteCond %{HTTP_HOST} ^www\.parapentemeribel\.net$ [NC,OR]
