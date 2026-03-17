@@ -415,7 +415,7 @@ document.addEventListener('keydown', function (event) {
             setText('.team-member:nth-of-type(1) p', 'State-certified pilot, passionate about paragliding for over 35 years. Stephane loves sharing his passion and helping everyone discover the magic of free flight.');
             setText('.team-member:nth-of-type(2) p', 'Professional pilot, reassuring and educational, Pierre guides you for a first flight or a thrill flight, in a warm and friendly atmosphere.');
             setText('.team-member:nth-of-type(3) p', 'Team secretary, Sarah manages bookings and coordinates communication with guests so each flight is prepared smoothly and efficiently.');
-            setText('.team-member:nth-of-type(4) p', 'Employed pilot at Parapente Meribel for over 15 years, Djampal is an experienced pilot, educational, and always attentive to passengers.');
+            setText('.team-member:nth-of-type(4) p', 'Pilot with the Parapente Meribel team for over 15 years, Djampal is an experienced pilot, educational, and always attentive to passengers.');
             setAltList('.team-member img', [
                 'Stephane, paragliding pilot in Meribel',
                 'Pierre, paragliding pilot in Meribel',
@@ -432,6 +432,7 @@ document.addEventListener('keydown', function (event) {
             setMeta('meta[property="og:description"]', 'Discover our tandem flight packages and options in Meribel.');
             setText('.services-preview h1', 'Services & Pricing');
             setHtml('.services-preview > p', 'Our flight packages vary by season and your preferences.<br>All flights are supervised by state-certified pilots, safety equipment is provided and transport to takeoff is included.');
+            setHtml('.services-preview .seasonal-warning', '<strong>We do not offer tandem flights during the winter season.</strong>');
             setText('.service-discovery .service-tag', 'Most requested');
             setText('.service-discovery h2', 'Discovery Flight');
             setText('.service-discovery .service-hook', 'The perfect offer for an unforgettable first flight.');
